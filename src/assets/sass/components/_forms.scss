@@ -1,0 +1,98 @@
+.form-control {
+    display: block;
+    width: 100%;
+    min-height: 4.5rem;
+    padding: .85rem 2rem;
+    border: 1px solid #e3e3e3;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #666;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    outline: 0;
+    &::placeholder {
+        color: inherit;
+        transition: color .3s;
+    }
+    &::-webkit-input-placeholder {
+        color: inherit;
+        transition: color .3s;
+    }
+    &::-moz-placeholder {
+        color: inherit;
+        transition: color .3s;
+    }
+    &:focus::placeholder {
+        color: transparent;
+    }
+    &:focus::-webkit-input-placeholder {
+        color: transparent;
+    }
+    &:focus::-moz-placeholder {
+        color: transparent;
+    }
+    &.form-solid {
+        background-color: #fff;
+        border: 0;
+        color: #8d8d8d;
+    }
+}
+
+// Select Box, Select Menu
+.select-box {
+    position: relative;
+
+    select {
+        position: relative;
+        max-width: 14rem;
+        min-height: auto;
+        width: auto;
+        height: 100%;
+        padding-left: 9px;
+        padding-right: 25px;
+        border: 1px solid #d7d7d7;
+        border-radius: 2px;
+        color: inherit;
+        background-color: transparent;
+        font-size: 1.2rem;
+        font-family: inherit;
+        letter-spacing: inherit;
+        z-index: 1;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &::before {
+        content: '\f078';
+        font-family: 'Font Awesome 5 Free';
+        position: absolute;
+        font-weight: 900;
+        font-size: 9px;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.select-box option {
+    font-size: 1.2rem;
+}
+
+@media (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    select::-ms-expand { display: none }
+    select:focus::-ms-value { background: transparent; color: currentColor }
+}
+
+// Input Wrapper
+.input-wrapper {
+    input.form-control {
+        flex: 1;
+        min-width: 40px;
+        font-size: 1.2rem;
+    }
+}

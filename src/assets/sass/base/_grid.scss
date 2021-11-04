@@ -1,0 +1,76 @@
+/* -------------------------------------------
+    Grid
+---------------------------------------------- */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -#{get(base, _gutter-md)};
+    margin-right: -#{get(base, _gutter-md)};
+
+    > * {
+        position: relative;
+        width: 100%;
+        padding-right: #{get(base, _gutter-md)};
+        padding-left: #{get(base, _gutter-md)};
+    }    
+}
+
+.gutter-lg {
+    margin-left: -#{get(base, _gutter-lg)};
+    margin-right: -#{get(base, _gutter-lg)};
+    > * {
+        padding-right: #{get(base, _gutter-lg)};
+        padding-left: #{get(base, _gutter-lg)};
+    }
+}
+
+@include mq(xs) {
+    .cols-xs-2 > * {
+        max-width: 50%;
+        flex: 0 0 50%; 
+    }
+}
+
+@include mq(sm) {
+    .cols-sm-3 > * {
+        max-width: 33.3333%;
+        flex: 0 0 33.3333%; 
+    }
+}
+
+@include mq(md) {
+    .cols-md-4 > * {
+        max-width: 25%;
+        flex: 0 0 25%; 
+    }
+}
+
+@include mq(lg) {
+    .cols-lg-5 > * {
+        max-width: 20%;
+        flex: 0 0 20%; 
+    }
+}
+
+@include mq(xl) {
+    .cols-xl-8 > * {
+        max-width: 50%;
+        flex: 0 0 50%; 
+    }
+}
+
+.col-6 {
+    max-width: 50%;
+    flex: 0 0 50%;
+}
+
+@include mq(lg) {
+    .col-lg-3 {
+        max-width: 25%;
+        flex: 0 0 25%;
+    }
+    .col-lg-9 {
+        max-width: 75%;
+        flex: 0 0 75%;
+    }
+}

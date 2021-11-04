@@ -1,0 +1,151 @@
+// Variables
+@include set-default(
+	(
+		header: (
+            font-family: $font-family,
+            letter-spacing:  -.025em,
+            color: false,
+            background: #fff,
+            // Link's color
+            _link-color: false,
+            // Link's color when it is hover or active
+            _link-active-color: $primary-color,
+            
+            // Header Middle
+			middle: (
+				padding-top: 2.7rem,
+                padding-bottom: 2.7rem,
+				color: #222,
+				background: #fff,
+				border-bottom: false,
+                font-family: false,
+				font-size: 1.2rem,
+				font-weight: 700,
+                letter-spacing: false,
+                text-transform: false
+			),
+            // Sticky Header
+            sticky: (
+                padding-top: 1.5rem,
+                padding-bottom: 1.4rem,
+                background: false,
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1),
+                color: false
+            )
+		)
+	)
+);
+
+// Header
+.header {
+    @include print_css(header);
+    .container,
+    .container-fluid {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.header-middle {
+    display: flex;
+}
+
+.header-border {
+    border-bottom: 1px solid $border-color;
+}
+
+.header-left {
+    flex: 1;
+}
+
+.header-left,
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right {
+    margin-left: auto;
+    a {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.header-middle {
+    @include print_css(header, middle);
+}
+
+// Sticky Content
+@keyframes fixedTop { 
+    from {
+        // transform: translateY(-100%); 
+        // transform-origin: center top 0px;
+        margin-top: -60px;
+    }
+    to { 
+        margin-top: 0;
+        // transform: translateY(0) 
+    }  
+}
+
+.sticky-header {
+   transition: margin 0.4s, opacity 0.5s, left 0.4s;
+
+   &.fixed {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        @include print_css(header, sticky);
+        z-index: 1100;
+        animation: fixedTop .4s;
+    }
+}
+
+.header-search .input-wrapper {
+    display: flex;
+    position: relative;
+}
+
+.header-search.hs-simple input.form-control {
+    padding: 0 5rem 0 1.55rem;
+    border-radius: 5px;
+    border: 2px solid;
+    border-color: #26c;
+    font-family: inherit;
+    background-color: #fff;
+    color: #999;
+}
+
+.header-search.hs-simple .btn-search {
+    position: absolute;
+    background: transparent;
+    padding: 0;
+    color: #333;
+    min-width: 48px;
+    height: 100%;
+    border-radius: 5px;
+    right: 0;
+    font-size: 2rem;
+    border: 0;
+}
+
+.header-search .btn-search i {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.6rem;
+}
+
+@include mq(xs, max) {
+    .header-middle .container {
+        flex-direction: column;
+    }
+
+    .header-middle .header-left {
+        margin-bottom: 1rem;
+    }
+
+    .header-middle .header-right {
+        margin-right: auto;
+    }
+}

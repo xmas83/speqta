@@ -1,0 +1,31 @@
+@charset 'UTF-8';
+
+/* 1. config */
+@import 'config/variables';
+
+/* 2. mixins */
+@import 'mixins/breakpoints'; 
+@import 'mixins/core';
+@import 'mixins/buttons';
+
+/* 3. base */
+
+@import 'base/base';
+@import 'base/helper';
+@import 'base/type';
+@import 'base/layout';
+@import 'base/grid';
+@import 'base/spacing';
+
+/* 5, components */
+@import 'components/forms';
+@import 'components/pagination';
+@import 'components/sidebar';
+
+/* 6. header */
+@import 'base/header/header';
+
+/* 7. footer */
+@import 'base/footer/footer';
+
+@import 'pages/index';

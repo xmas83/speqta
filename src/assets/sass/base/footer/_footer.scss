@@ -1,0 +1,84 @@
+// Variables
+@include set-default(
+	(
+		footer: (
+            font-family: $font-family,
+            font-size: 1.3rem,
+            letter-spacing: false,
+            background: #222,
+            color: false,
+            _link-active-color: #fff,
+            bottom: (
+                padding: 2.6rem 0 3rem,
+                background: false,
+            ),
+            copyright: (
+                font-family: false,
+                font-size: 1.4rem,
+                font-weight: 500,
+                color: false,
+                letter-spacing: -.01em,
+                line-height: 1.5,
+            )
+        )
+    )
+);
+// Footer
+.footer {
+    @include print_css( footer );
+    p {
+        font-size: inherit;
+    }
+    a:not(.social-link) {   
+        &:hover {
+            @include css( color, footer, _link-active-color );
+        }
+    }
+}
+
+// Footer Bottom
+.footer-bottom {
+    &,
+    .container,
+    .container-fluid{
+        display: flex;
+        align-items: center;
+    }
+    @include print_css( footer, bottom );
+
+    .footer-left,
+    .footer-right {
+        flex: 1;
+    }
+    .footer-left {
+        display: flex;
+    }
+    .footer-right {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+// Responsive
+@include mq('lg', 'max') {
+    .footer-bottom {
+        &,
+        > .container {
+            display: block;
+        }
+        .footer-left,
+        .footer-right {
+            justify-content: center;
+        }
+        .footer-left,
+        .footer-center {
+            margin-bottom: 2.7rem;
+        }
+    }
+}  
+
+// Copyright Text
+.footer .copyright {
+    margin: 0;
+    @include print_css( footer, copyright );
+}

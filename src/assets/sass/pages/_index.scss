@@ -1,0 +1,195 @@
+// Toolbox, Filter Clean Widget, Filter Price Widget
+
+.toolbox,
+.toolbox-left,
+.toolbox-right,
+.toolbox-item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; 
+}
+.toolbox {
+    justify-content: space-between;
+    font-size: 1.3rem; 
+    line-height: 1.5;   
+    padding: 3.5rem .2rem 1rem;
+    background-color: #fff;
+    transition: margin 0.4s, opacity 0.5s, left 0.4s, right 0.4s;
+
+    &.sticky-toolbox {
+        padding-top: 3rem;
+    }
+
+    label {
+        margin-right: .8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    select {
+        cursor: pointer;
+        padding-top: .85rem;
+        padding-bottom: .85rem;
+        border-color: #ccc;
+        letter-spacing: -.03em;
+    }
+    .select-box .form-control {
+        color: #222;
+    }
+    .select-box::before {
+        font-size: 1.2rem;
+        margin-top: 1px;
+        right: 1rem;
+    }
+    
+    // ToolBox Sort
+    .toolbox-sort {
+        .form-control {
+            max-width: 15rem;
+            padding-left: 1.4rem;
+        }
+        &::before {
+            right: 1.4rem;
+        }
+    }
+}
+.toolbox-item {
+    flex-wrap: nowrap;
+    margin-bottom: 1rem;
+    label { color: $dark-color; }
+}
+
+// Toolbox Pagination
+.toolbox-pagination {
+    position: relative;
+    margin-bottom: 1rem;
+    padding: 2.5rem .2rem;
+    border-top: 1px solid #e1e1e1;
+}
+
+//Left Sidebar Toggle
+.toolbox .toolbox-left .left-sidebar-toggle {
+    padding: 0.7em 0.92em;
+    margin-right: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+// Navigation Style
+.sticky-toolbox.fixed {
+    position: fixed;
+    background-color: #fff;
+    padding: 1rem 2rem 0;
+}
+
+// Filter Action, Price Slider, Filter Clean
+.filter-items a::before {
+	content: '';
+	position: absolute;
+	border: 1px solid $grey-color;
+	width: 18px;
+	height: 18px;
+	border-radius: 2px;
+	top: 50%;
+	transform: translateY(-50%);
+	left: -2.7rem;
+	font-size: .7em;
+	font-weight: 900;
+	font-family: 'Font Awesome 5 Free';
+	text-align: center;
+	text-indent: 1px; // issue
+	line-height: 1.7em;
+}
+
+.btn-icon-right i {
+    margin-left: .8rem;
+    font-size: 1rem;
+}
+
+// Responsive
+@include mq(lg) {
+	.sidebar-fixed {		
+		transition: margin .4s;
+
+		+ .main-content {
+			transition: flex-basis .4s, max-width .4s;
+		}
+	}
+
+	.sticky-sidebar-wrapper.closed {
+		height: 0; // to solve issue occurs by closed sticky sidebar for fixed sidebar
+	}
+	.closed.sidebar {
+		margin-left: -25%;
+	}
+
+	.closed + .main-content {
+		max-width: 100%;
+		flex-basis: 100%;
+	}
+
+	.main-content-wrap {
+		overflow: hidden;
+	}
+}
+
+@include mq(xs, max) {   
+    .sticky-toolbox.fixed {
+        padding: 1rem 1.5rem 0;
+    }
+    .toolbox {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .btn.toolbox-item {
+        font-size: 1.4rem;
+        padding: .61em;
+    }
+
+    .toolbox .toolbox-left .left-sidebar-toggle {
+        padding: .61em .92em;
+    }
+}
+@include mq(sm, max) {
+    .toolbox-item.select-box {
+        margin-right: 0;   
+    }
+
+    .toolbox .toolbox-left .left-sidebar-toggle {
+        margin-right: 1rem;
+    }
+
+    .toolbox  {
+        .toolbox-left {
+            margin: 0;
+        }
+
+        .left-sidebar-toggle {
+            margin-right: 0.5rem;
+        }
+
+        .toolbox-sort .form-control {
+            max-width: 12.8rem;
+        }
+    }
+
+    .toolbox-pagination {
+        flex-direction: column;
+
+        > .show-info {
+            margin-right: 0;
+        }
+
+        > *:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+@include mq(md,max) {
+    .toolbox-item {
+        label, > span, &.show-info {
+            display: none;
+        }
+    }
+}

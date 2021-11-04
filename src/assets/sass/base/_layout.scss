@@ -1,0 +1,86 @@
+/* -------------------------------------------
+    Layout
+---------------------------------------------- */
+.container {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@include mq(xs, max) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+.container {
+    @include css(max-width, base, _container-width);
+}
+
+.flip-card {
+    position: relative;
+    perspective: 1000px;
+}
+
+.flip-card .flip-back, .flip-card .flip-front {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.7s;
+}
+
+.flip-card .flip-front {
+    transform: translate3d(0,0,1px) rotateY(0deg);
+}
+
+.main-features .icon-box {
+    padding: 4.5rem 3rem;
+    box-shadow: 0 5px 50px 0 rgb(0 0 0 / 10%);
+    border-radius: 1rem;
+    background: #fff;
+}
+
+.flip-card .flip-back {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translate3d(0,0,-1px) rotateY(180deg);
+}
+
+.flip-card .flip-content {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    perspective: inherit;
+    // transform: translate3d(0,0,60px);
+}
+
+.flip-card:hover .flip-front {
+    transform: translate3d(0,0,-1px) rotateY(-180deg);
+}
+
+.flip-card:hover .flip-back {
+    transform: translate3d(0,0,1px) rotateY(0deg);
+}
+
+.bg-gradient {
+    background: linear-gradient(to top left,#5349ff,#08c)!important;
+}
+
+.card .card-title {
+    margin-bottom: .5rem;
+}
+
+.card .card-year {
+    margin-bottom: .5rem;
+}
+
+.card .card-actor, .card .card-director {
+    margin-bottom: .5rem;
+    font-size: 1.2rem;
+}
